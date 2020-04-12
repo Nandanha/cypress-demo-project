@@ -1,0 +1,87 @@
+Environment Setup documentation: 
+ 
+●Create a project folder. 
+ 
+●Installation of Nodejs to start with here is the link , select suitable and download the necessary 
+binary files for your environment. 
+ 
+●Double click on the file and follow the installation wizard. 
+ 
+●Once installation is complete do open command prompt and check for node version using the 
+command node –version. 
+ 
+●With Nodejs the npm also gets installed which you can verify by using the command npm 
+version or npm –version 
+ 
+●Install cypress by creating a package.json file within the same project folder. 
+{ 
+"devDependencies": {
+"cypress": "^3.3.2",
+ 
+ 
+"cypress-multi-reporters": "^1.1.22",
+"mocha": "^5.2.0",
+"mochawesome": "^4.0.0",
+"mochawesome-merge": "^2.0.1",
+"moment": "^2.24.0",
+"mochawesome-report-generator": "^4.0.0"   
+}} 
+             
+●Once the package.json is ready use npm install command 
+ 
+●Cypress mocha and associated reporting folders created. 
+ 
+●Then once cypress is installed, navigate to node_modules folder. 
+ 
+●Navigate to .bin folder and delete the cypress file present. 
+ 
+●Now open cypress.bat file which open with example folder scripts, this is the cypress UI which 
+you get to see. 
+ 
+●Navigate the integrations folder which will be within cypress folder, 
+D:\cypress\node_modules\.bin\cypress\integration 
+ 
+●Place your test scripts in this folder. 
+ 
+●Update the cypress.json file based on your requirement. 
+ 
+{ 
+  "projectId": "skdumn", 
+  "baseUrl": "TESTURL", 
+  "integrationFolder":"D:/cypress/cypress/integration",  
+  "reporter": "mochawesome", 
+  "reporterOptions": { 
+ 
+ 
+    "reportDir": "cypress/node_modules/.bin/cypress/results", 
+    "overwrite": false, 
+    "html": false, 
+    "json": true 
+  } 
+} 
+ 
+Commands to use to run scripts from command line: 
+
+Run individual spec: 
+cypress run --spec "cypress/integration/examples/actions.spec.js"  
+ 
+Run using mochawesome for mochawesome report: 
+cypress run --reporter mochawesome 
+ 
+Run all specs within a folder: 
+cypress run --spec "cypress/integration/login/**/*" 
+ 
+Visual Regression comparison in cypress: 
+ 
+Command to execute and compare base image with actual: 
+cypress run --spec 
+"D:\cypress\node_modules\.bin\cypress\integration\testspecs\LoginSnapshot_tes
+ting.js" --env type=actual 
+ 
+Command to capture base images which will be compared at a later phase : 
+cypress run --spec 
+"D:\cypress\node_modules\.bin\cypress\integration\testspecs\LoginSnapshot_tes
+ting.js" --env type=base --config screenshotsFolder="D:\cypress\cypress\snapshots\base" 
+ 
+ 
+ 
